@@ -16,6 +16,7 @@ RUN npm install
 
 COPY . .
 
-RUN npm run build
+ARG VUE_APP_BASE_API_URL
+ENV VUE_APP_BASE_API_URL=$VUE_APP_BASE_API_URL
 
-USER ${USER}
+RUN npm run build

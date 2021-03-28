@@ -13,9 +13,9 @@ services:
     env_file:
       - nginx/.env.docker
     volumes:
-      - ./front/dist/prod:/var/www/front
       - media_data:/var/www/media
       - static_data:/var/www/static
+      - front_static:/var/www/front
 
   back:
     build: ./back/.
@@ -32,6 +32,13 @@ services:
       - media_data:/application/src/media
       - static_data:/application/src/static
       - ./back/project/fixtures:/application/src/project/fixtures
+
+  front:
+    build: ./front/.
+    environment:
+      - VUE_APP_BASE_API_URL=${VUE_APP_BASE_API_URL}
+    volumes:
+      - front_static:/application/src/dist/prod
 
   dramatiq:
     build: ./back/.
@@ -66,3 +73,4 @@ services:
 volumes:
   media_data:
   static_data:
+  front_static:
