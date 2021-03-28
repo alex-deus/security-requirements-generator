@@ -12,6 +12,7 @@
 *.egg-info
 
 data/
+tmp/
 
 back/tmp/
 back/.env
