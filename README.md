@@ -31,6 +31,7 @@ cd srg
 ## Server
 ```bash
 export BASE_URL=http://hostname.com
+export VUE_APP_BASE_API_URL=http://hostname.com
 docker-compose up -d --build
 docker-compose run back migrate
 docker-compose run back collectstatic
